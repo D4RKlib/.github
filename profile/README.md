@@ -15,6 +15,7 @@ These packages are designed with real-world utility, ease of integration, and ex
 | [`D4RKLib.InputBox`](https://github.com/D4RKLib/D4RKLib.InputBox)                               | Modern, customizable WinForms input box with validation, numeric/regex/confirmation features |
 | [`D4RKLib.CommandMessages`](https://github.com/D4RKLib/D4RKLib.CommandMessages)                 | Encodes/decodes structured command messages with metadata (ideal for socket/message passing) |
 | [`D4RKLib.CommandFlow`](https://github.com/D4RKLib/D4RKLib.CommandFlow)                         | Lightweight command routing/dispatch system with metadata-aware filtering                    |
+| [`D4RKLib.DropKit`](https://github.com/D4RKLib/D4RKLib.DropKit)                                 | Fluent drag-and-drop framework for WinForms with previews, tagging, file export, and more    |
 
 ---
 
