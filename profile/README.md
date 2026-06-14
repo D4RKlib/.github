@@ -1,65 +1,140 @@
-# D4RKLib
+# 🌌 D4RKLib Suite
 
-![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=flat-square&logo=dotnet)
-![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)
-![Platform](https://img.shields.io/badge/Platform-Cross%20Platform-lightgrey?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active%20Development-success?style=flat-square)
+![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?style=for-the-badge&logo=dotnet)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Cross%20Platform-lightgrey?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Active%20Development-success?style=for-the-badge)
 
-**D4RKLib** is a suite of high-performance, modular, and battle-tested .NET 9 libraries designed to accelerate modern development.
-
-Built with a focus on **developer ergonomics** and **raw speed**, these packages provide the building blocks for professional-grade applications. Whether you are building complex desktop tooling, background services, or real-time data utilities, D4RKLib delivers functionality without the bloat.
+**D4RKLib** is a collection of high-performance, modular, and developer-ergonomic .NET 9 libraries designed to accelerate C# application development. Structured as a clean monorepo, it offers focused packages for core system concerns—ranging from real-time networking and database ORMs to low-level Windows UI hooks and modern OpenAI integrations.
 
 ---
 
-## 🌐 Networking & Connectivity
+## 📂 Repository Layout
 
-| Package | Status | Description |
-| :--- | :--- | :--- |
-| [`D4RKLib.Networking.Subscriptions`](https://github.com/D4RKLib/D4RKLib.Networking.Subscriptions) | ![New](https://img.shields.io/badge/NEW-brightgreen?style=flat-square) | **High-performance Pub/Sub engine.** Features O(1) routing, MQTT-style wildcards (`*`, `**`), and retained message support. |
-| [`D4RKLib.Networking.WebSockets`](https://github.com/D4RKLib/D4RKLib.Networking.WebSockets) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Robust WebSocket client/server.** Features auto-reconnect, keep-alive interceptors, and authentication pipelines. |
+The codebase is structured into logical categories, allowing you to easily browse and import only the packages you need:
 
-## 💾 Data & Logic
-
-| Package | Status | Description |
-| :--- | :--- | :--- |
-| [`D4RKLib.Data.MySQL`](https://github.com/D4RKLib/D4RKLib.Data.MySQL) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Async-first ORM.** Supports code-first schema syncing, JSON columns, and unit-of-work transactions. |
-| [`D4RKLib.CommandFlow`](https://github.com/D4RKLib/D4RKLib.CommandFlow) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Command routing system.** Lightweight dispatching with metadata-aware filtering and execution. |
-| [`D4RKLib.CommandMessages`](https://github.com/D4RKLib/D4RKLib.CommandMessages) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Protocol definitions.** Structured encoding/decoding for command messages with rich metadata. |
-
-## 🖥️ UI & Input
-
-| Package | Status | Description |
-| :--- | :--- | :--- |
-| [`D4RKLib.Input.KeyboardShortcuts`](https://github.com/D4RKLib/D4RKLib.Input.KeyboardShortcuts) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Global hook system.** Advanced keyboard monitoring supporting complex modifier combinations. |
-| [`D4RKLib.InputBox`](https://github.com/D4RKLib/D4RKLib.InputBox) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Modern input dialogs.** Fully customizable WinForms input with validation, regex support, and dark mode. |
-| [`D4RKLib.DropKit`](https://github.com/D4RKLib/D4RKLib.DropKit) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Fluent Drag-and-Drop.** Simplifies file previews, export, tagging, and cross-app transfers. |
+```
+D4RKLib/
+├── ⚙️ Commands/        # Action routing, dispatching, and message contracts
+├── 💾 Data/            # Databases (MySQL, SQLite) and object dirty-tracking
+├── 🎨 Graphics/        # High-performance native pixel reading
+├── ⌨️ Input/           # OS-level keyboard shortcut hooks
+├── ☁️ Microsoft/       # Simplifies Microsoft Graph API integrations
+├── 🌐 Networking/      # LAN discovery, REST/JWT, SSE, Pub/Sub, WebHost, WebSockets
+├── 🤖 OpenAI/          # Fluent SDK for OpenAI API (Chat, Audio, Images, Tools)
+└── 🖥️ UI/              # WinForms UI extensions (DropKit Drag/Drop, InputBox)
+```
 
 ---
 
-## 🌱 Philosophy
+## 📦 Package Registry
 
-* **🧱 Modular** — Decoupled architecture; import only what you need.
-* **⚡ Fast** — Designed for .NET 9 with zero-allocation paths where possible.
-* **⚙️ Modern** — Fully asynchronous (`Task`/`Await`) and Dependency Injection (DI) ready.
-* **🛡️ Robust** — Extensive error handling and thread-safe implementations.
+Below is a detailed overview of all libraries included in the **D4RKLib** suite, organized by category:
+
+### ⚙️ Commands & Flow Control
+Orchestrate execution logic and structure message communication between different layers of your applications.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Commands.CommandFlow** | [`./Commands/CommandFlow`](./Commands/CommandFlow) | ![Alpha](https://img.shields.io/badge/stability-alpha-orange?style=flat-square) | **Command routing system.** Lightweight dispatching with metadata-aware filtering and execution routing. |
+| **D4RKLib.Commands.CommandMessages** | [`./Commands/CommandMessages`](./Commands/CommandMessages) | ![Alpha](https://img.shields.io/badge/stability-alpha-orange?style=flat-square) | **Protocol contracts.** Structured serialization/deserialization for command payloads and message definitions. |
+
+### 💾 Data & Object Tracking
+Lightweight persistence layers and tracking mechanisms that avoid the overhead of heavy frameworks.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Data.MySQL** | [`./Data/MySQL`](./Data/MySQL) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Async-first MySQL ORM.** High-performance mapping, code-first automatic schema syncing, JSON columns, and transactions. |
+| **D4RKLib.Data.Sqlite** | [`./Data/Sqlite`](./Data/Sqlite) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Zero-friction SQLite ORM.** "God-tier" local DB management with automatic migrations, JSON/Enum mapping, and LINQ-to-SQL translation. |
+| **D4RKLib.Data.Trackables** | [`./Data/Trackables`](./Data/Trackables) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Object dirty-tracking.** Base classes that support property change notification (`INotifyPropertyChanged`) and property delta extraction. |
+
+### 🎨 Graphics
+Low-level screen reading and graphics manipulation.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Graphics** | [`./Graphics`](./Graphics) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **High-speed pixel reader.** Fast screen pixel and region reading utilizing native `GDI32`/`USER32` P/Invokes to bypass managed GDI overhead. |
+
+### ⌨️ Input Handling
+System-wide input listeners and hotkey bindings.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Input.KeyboardShortcuts** | [`./Input/KeyboardShortcuts`](./Input/KeyboardShortcuts) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Global shortcut binding.** Windows global keyboard hooks supporting complex modifier key combinations and async actions. |
+
+### ☁️ Microsoft Cloud Integrations
+Lightweight wrappers for Microsoft APIs.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Microsoft.Graph** | [`./Microsoft/Graph`](./Microsoft/Graph) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Simple Graph API Wrapper.** Clean async DTO wrappers for OneDrive and Mail, removing dependency on the bloated Microsoft Graph SDK. |
+
+### 🌐 Networking & Real-Time Communication
+Robust, production-ready libraries covering protocols, servers, clients, and messaging topologies.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.Networking.Discovery** | [`./Networking/Discovery`](./Networking/Discovery) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **LAN auto-discovery.** Lightweight UDP broadcaster and listener for discovering local game instances, devices, or services. |
+| **D4RKLib.Networking.Rest** | [`./Networking/Rest`](./Networking/Rest) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **HTTP REST / JWT Clients.** Strongly-typed `RestClient` combined with a `JwtRestClient` that automates login, refresh, and retry flows. |
+| **D4RKLib.Networking.SseClient** | [`./Networking/Sse`](./Networking/Sse) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Server-Sent Events (SSE).** Event-driven client for `text/event-stream` endpoints supporting automatic reconnect and streaming data. |
+| **D4RKLib.Networking.Subscriptions** | [`./Networking/Subscriptions`](./Networking/Subscriptions) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **In-Memory Pub/Sub Engine.** High-performance thread-safe router featuring O(1) routing, MQTT wildcards (`*`, `**`), and retained messages. |
+| **D4RKLib.Networking.WebHost** | [`./Networking/WebHost`](./Networking/WebHost) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Composable Kestrel Host.** Composable server that supports REST routing, secure WebSockets, SSE, static files, and JWT auth in one instance. |
+| **D4RKLib.Networking.WebSocketClient** | [`./Networking/WebSocket`](./Networking/WebSocket) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Event-driven WebSocket client.** Minimal wrapper over `ClientWebSocket` that manages connection state and JSON framing. |
+
+### 🤖 OpenAI API Integration
+Build AI-augmented applications without bloated dependencies.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.OpenAI.ApiSdk** | [`./OpenAI/ApiSdk`](./OpenAI/ApiSdk) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Fluent OpenAI C# SDK.** Full-featured builder API covering Chat (w/ Tool/Function calls and Typed Structured Outputs), Speech, Transcription, and Images. |
+
+### 🖥️ Windows Forms UI Componentry
+Add modern interactive patterns to WinForms desktop applications.
+
+| Package | Path | Stability | Description |
+| :--- | :--- | :--- | :--- |
+| **D4RKLib.UI.WinForms.DropKit** | [`./UI/WinForms/DropKit`](./UI/WinForms/DropKit) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Fluent Drag & Drop.** Complete supertool for WinForms drag/drop workflows, animated live previews, file exports, and tag validation. |
+| **D4RKLib.UI.WinForms.InputBox** | [`./UI/WinForms/InputBox`](./UI/WinForms/InputBox) | ![Stable](https://img.shields.io/badge/Stable-blue?style=flat-square) | **Polished Input Dialogs.** Customizable user prompts featuring dark/light themes, regular expression inputs, and built-in validation rules. |
 
 ---
 
-## 📌 Licensing
+## 🛠️ Monorepo Guidelines & Building
 
-All libraries in the **D4RKLib** suite are released under the **MIT License**.
-You are free to use them in personal and commercial projects, provided attribution is given.
+### Prerequisites
+- **.NET SDK 9.0+**
+- Visual Studio 2022 (with WinForms workload for UI libraries) or JetBrains Rider.
+
+### Compiling the Suite
+To build the entire suite at once, run the following command in the root folder:
+```bash
+dotnet build
+```
+
+To run all unit tests:
+```bash
+dotnet test
+```
+
+### Importing a Specific Package
+Since D4RKLib is organized as a monorepo, you can easily reference individual projects within your local solutions:
+```bash
+dotnet add reference <path-to-d4rklib-project-csproj>
+```
+Or, consume pre-compiled NuGet/GitHub Release packages directly in your projects.
+
+---
+
+## ⚡ Design Philosophy
+
+All libraries in the **D4RKLib** ecosystem adhere to three core pillars:
+1. **Developer Ergonomics**: Intuitive fluent APIs, builders, and extensibility points that let you write less boilerplate code.
+2. **Performance-First**: Minimal memory allocations, async/await everywhere, and direct P/Invoke calls to bypass heavy wrappers when working with system APIs.
+3. **Decoupled & Composable**: No monolithic dependencies. You only import and pay for what you actually use.
+
+---
+
+## 🛡️ License
+
+This suite is licensed under the **MIT License**. You are free to modify, distribute, and use it in both open-source and commercial applications.
 
 > Copyright © 2026 Paul Hayden (D4RKLib)
-
----
-
-## 🤝 Ecosystem
-
-These libraries are currently maintained as part of the private D4RKLib ecosystem, with public releases available via **GitHub Releases**.
-
-* ⭐ **Star** the repositories to show support.
-* 🐛 **Report** issues via the tracker.
-* 🔄 **Check** back frequently for updates.
-
-**Built for developers, by developers.**
